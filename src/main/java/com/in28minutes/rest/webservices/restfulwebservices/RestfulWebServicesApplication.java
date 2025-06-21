@@ -1,0 +1,36 @@
+package com.in28minutes.rest.webservices.restfulwebservices;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@SpringBootApplication
+public class RestfulWebServicesApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(RestfulWebServicesApplication.class, args);
+	}
+	
+	    //http://localhost:3000/ to 8080
+		//Cross Origin Requests
+		//Allow all requests only from http://localhost:3000/
+		
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**") // Applies to all endpoints
+					.allowedMethods("*")   // Allows all HTTP methods (GET, POST, etc.)
+					.allowedOrigins("http://localhost:3000"); // Allows frontend at this origin
+				
+//					.allowedHeaders("*")
+//					.allowCredentials(true); // For sending cookies or Authorization headers
+			}
+		};
+	}
+
+
+}
