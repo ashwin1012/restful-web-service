@@ -24,10 +24,7 @@ public class RestfulWebServicesApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**") // Applies to all endpoints
 					.allowedMethods("*")   // Allows all HTTP methods (GET, POST, etc.)
-					.allowedOrigins("http://localhost:3000"); // Allows frontend at this origin
-				
-//					.allowedHeaders("*")
-//					.allowCredentials(true); // For sending cookies or Authorization headers
+					.allowedOrigins("http://localhost:3000", "https://your-frontend-app.netlify.app"); // Allows frontend at this origin
 			}
 		};
 	}

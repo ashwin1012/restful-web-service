@@ -12,6 +12,11 @@ public class HelloWorldController {
 	public String basicAuthCheck() {
 		return "Success"; 
 	}
+	
+	@GetMapping(path = "/")
+	public String returnSomethingAtRootUrl() {
+		return "Congratulations!"; 
+	}
 
 	@GetMapping(path = "/hello-world")
 	public String helloWorld() {

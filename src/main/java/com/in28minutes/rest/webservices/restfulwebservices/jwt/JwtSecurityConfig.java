@@ -47,17 +47,19 @@ public class JwtSecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 	    return http
-	        .authorizeHttpRequests(auth -> auth
-	            .anyRequest().permitAll()) 
 	        .csrf(AbstractHttpConfigurer::disable)
 	        .sessionManagement(session -> session
 	            .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-	        .httpBasic(Customizer.withDefaults())
+	        .authorizeHttpRequests(auth -> auth
+	            .requestMatchers("/authenticate", "/actuator/**").permitAll()
+	            .anyRequest().authenticated()
+	        )
+	        .oauth2ResourceServer(oauth2 -> oauth2
+	            .jwt()  
+	        )
 	        .headers(headers -> headers.frameOptions().sameOrigin())
 	        .build();
 	}
-
-
 
     @Bean
     public AuthenticationManager authenticationManager(
