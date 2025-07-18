@@ -23,11 +23,13 @@ public class RestfulWebServicesApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**") // Applies to all endpoints
-					.allowedMethods("*")   // Allows all HTTP methods (GET, POST, etc.)
-					.allowedOrigins("http://localhost:3000", "https://todowebapp-api.netlify.app/"); // Allows frontend at this origin
+					.allowedMethods("*")    // Allows all HTTP methods (GET, POST, etc.)
+					.allowedOrigins(
+						"http://localhost:3000", 
+						"https://todowebapp-api.netlify.app"
+					); 
 			}
 		};
 	}
-
 
 }

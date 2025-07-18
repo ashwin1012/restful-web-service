@@ -49,7 +49,7 @@ public class TodoResource {
 	public Todo createTodo(@PathVariable String username,
 			 @RequestBody Todo todo) {
 		Todo createdTodo = todoService.addTodo(username, todo.getDescription(), 
-				todo.getTargetDate(),todo.isDone() );
+				todo.getTargetDate(),todo.getDone() );
 		
 		return createdTodo;
 	}

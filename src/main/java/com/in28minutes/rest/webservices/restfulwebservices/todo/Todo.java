@@ -14,7 +14,7 @@ public class Todo {
 		
 	}
 	
-	public Todo(Integer id, String username, String description, LocalDate targetDate, boolean done) {
+	public Todo(Integer id, String username, String description, LocalDate targetDate, String done) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -31,7 +31,7 @@ public class Todo {
 	
 	private String description;
 	private LocalDate targetDate;
-	private boolean done;
+	private String done;
 
 	public int getId() {
 		return id;
@@ -65,11 +65,11 @@ public class Todo {
 		this.targetDate = targetDate;
 	}
 
-	public boolean isDone() {
+	public String getDone() {
 		return done;
 	}
 
-	public void setDone(boolean done) {
+	public void setDone(String done) {
 		this.done = done;
 	}
 
