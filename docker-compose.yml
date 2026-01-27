@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: fullstacktodopg
+    environment:
+      POSTGRES_USER: todos-user
+      POSTGRES_PASSWORD: dummytodos
+      POSTGRES_DB: todos
+    ports:
+      - "5432:5432"
+    networks:
+      - restful-net
+
+  webapp:
+    image: restful-web-service:latest
+    container_name: restful-web-service
+    build: .
+    ports:
+      - "5050:5050"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/todos
+      SPRING_DATASOURCE_USERNAME: todos-user
+      SPRING_DATASOURCE_PASSWORD: dummytodos
+    depends_on:
+      - postgres
+    networks:
+      - restful-net
+
+networks:
+  restful-net:
+    driver: bridge
