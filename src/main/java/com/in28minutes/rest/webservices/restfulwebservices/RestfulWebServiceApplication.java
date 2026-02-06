@@ -7,10 +7,10 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-public class RestfulWebServicesApplication {
+public class RestfulWebServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestfulWebServicesApplication.class, args);
+		SpringApplication.run(RestfulWebServiceApplication.class, args);
 	}
 	
 	    //http://localhost:3000/ to 8080
